@@ -14,7 +14,9 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
+    "@datastructures-js/deque": "^1.0.3",
     "@datastructures-js/heap": "^4.1.0",
-    "@datastructures-js/trie": "^4.2.1"
+    "@datastructures-js/trie": "^4.2.1",
+    "lodash": "^4.17.21"
   }
 }
