@@ -1,7 +1,7 @@
 /**
  * In a special ranking system, each voter gives a rank from highest to lowest to all teams participated in the competition.
  *
- * THIS IS JUST LEXIOGRAPHICAL ORDERING!!
+ * THIS IS JUST LEXIOGRAPHICAL ORDERING!! EXPLAINED IN A VERY COMPLICATED WAY.
  * The ordering of teams is decided by who received the most position-one votes.
  * If two or more teams tie in the first position, we consider the second position to resolve the conflict,
  * if they tie again, we continue this process until the ties are resolved.
@@ -19,7 +19,20 @@ export class VotingSystemMedium {
     pickWinner(votes: string[]) {
         const countedVotes = this.countVotes(votes);
 
-        const sorted = Object
+        const sorted = this.sortCountedVotes(countedVotes);
+
+        const answer = sorted.map(s => s[0]).join('');
+
+        return {answer, sorted};
+    }
+
+    /**
+     * Sorts the counted votes using a lexiographic-like approach
+     * @param countedVotes
+     * @private
+     */
+    private sortCountedVotes(countedVotes: {[key: string]: number[]}){
+        return Object
             .entries(countedVotes)
             .sort(([letterA, votesA], [letterB, votesB])=>{
                 let i = 0;
@@ -43,12 +56,13 @@ export class VotingSystemMedium {
                 // Fallback to lexiographic ordering
                 return letterA.localeCompare(letterB);
             });
-
-        const answer = sorted.map(s => s[0]).join('');
-
-        return {answer, sorted};
     }
 
+    /**
+     * 
+     * @param votes
+     * @private
+     */
     private countVotes(votes: string[]) {
         const numberOfVotes = votes[0].length;
         const counter: {[key: string]: number[]} = {};
