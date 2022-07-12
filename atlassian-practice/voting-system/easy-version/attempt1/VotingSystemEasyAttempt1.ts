@@ -8,7 +8,7 @@ interface ICounter {
  * I am assuming its this: https://www.glassdoor.com/Interview/2-Given-a-list-of-candidates-find-the-winner-only-Also-for-handling-a-tie-the-candidate-out-of-all-the-candidates-who-QTN_3942501.html
  * OR This: https://practice.geeksforgeeks.org/problems/winner-of-an-election-where-votes-are-represented-as-candidate-names-1587115621/1
  */
-export class VotingSystemEasy {
+export class VotingSystemEasyAttempt1 {
 
     /**
      * Given a list of candidates, find the winner only.
@@ -18,9 +18,9 @@ export class VotingSystemEasy {
      */
     pickWinnerOneRound(votes: string[]) {
         // TODO: input validation
-        const voteCount = VotingSystemEasy.countVotesForIteration(votes);
+        const voteCount = VotingSystemEasyAttempt1.countVotesForIteration(votes);
 
-        const votesUsingSorting = VotingSystemEasy.pickWinnerUsingSorting(voteCount);
+        const votesUsingSorting = VotingSystemEasyAttempt1.pickWinnerUsingSorting(voteCount);
 
         return votesUsingSorting[0][0];
     }

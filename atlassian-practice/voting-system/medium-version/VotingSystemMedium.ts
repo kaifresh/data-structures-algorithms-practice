@@ -13,7 +13,7 @@
  *
  * based on https://leetcode.com/problems/rank-teams-by-votes/
  */
-import {VotingSystemEasy} from "../easy-version/VotingSystemEasy";
+import {VotingSystemEasyAttempt1} from "../easy-version/attempt1/VotingSystemEasyAttempt1";
 
 export class VotingSystemMedium {
     pickWinner(votes: string[]) {
@@ -59,7 +59,7 @@ export class VotingSystemMedium {
     }
 
     /**
-     * 
+     *
      * @param votes
      * @private
      */

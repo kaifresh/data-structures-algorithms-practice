@@ -1,12 +1,18 @@
 
 type HTTPMethods = 'get' | 'post' | 'put' | 'delete';
 
-export class URLRouter {
 
-    private routes: {[key: string]: () => any} = {}; // what if it was a trie
+/**
+ * Additions
+ * - Make this a singleton
+ * - Use a trie
+ */
+export class URLRouterFirstAttempt {
+
+    private static routes: {[key: string]: () => any} = {}; // what if it was a trie
     // private routes: Trie = new Trie();
 
-    private errorHandlers = {
+    private static errorHandlers = {
         404: () => "Not found",
     }
 
@@ -18,8 +24,8 @@ export class URLRouter {
      * @param handler
      */
     setHandlerForRoute(route: string, httpMethod: HTTPMethods, handler: () => any) {
-        const key = URLRouter.generateKeyForRouteAndString(route, httpMethod);
-        this.routes[key] = handler;
+        const key = URLRouterFirstAttempt.generateKeyForRouteAndString(route, httpMethod);
+        URLRouterFirstAttempt.routes[key] = handler;
     }
 
     /**
@@ -28,13 +34,13 @@ export class URLRouter {
      * @param httpMethod
      */
     getHandlerForRoute(route: string, httpMethod: HTTPMethods) {
-        const key = URLRouter.generateKeyForRouteAndString(route, httpMethod);
-        const handler = this.routes[key];
-        return handler || this.errorHandlers["404"];
+        const key = URLRouterFirstAttempt.generateKeyForRouteAndString(route, httpMethod);
+        const handler = URLRouterFirstAttempt.routes[key];
+        return handler || URLRouterFirstAttempt.errorHandlers["404"];
     }
 
     getRoutesCount() {
-        return Object.keys(this.routes).length;
+        return Object.keys(URLRouterFirstAttempt.routes).length;
     }
 
     private static generateKeyForRouteAndString(route: string, httpMethod: HTTPMethods) {

@@ -1,22 +1,22 @@
 import {assert} from 'chai';
-import {URLRouter} from "./URLRouter";
+import {URLRouterFirstAttempt} from "./URLRouterFirstAttempt";
 
 describe('URLRouter', function () {
     it('should set a handler for a URL', async function () {
-        const router = new URLRouter();
+        const router = new URLRouterFirstAttempt();
         router.setHandlerForRoute('/images', 'get', () => 'Here are some images')
 
         assert.equal(router.getRoutesCount(), 1);
     });
     it('should set two handlers for the same URL', async function () {
-        const router = new URLRouter();
+        const router = new URLRouterFirstAttempt();
         router.setHandlerForRoute('/images', 'get', () => 'Here are some images')
         router.setHandlerForRoute('/images', 'get', () => 'Here are some images')
 
         assert.equal(router.getRoutesCount(), 1);
     });
     it('should get a route we have previously set', async function () {
-        const router = new URLRouter();
+        const router = new URLRouterFirstAttempt();
         const handler = () => 'Here are some images';
         router.setHandlerForRoute('/images', 'get', handler)
 
@@ -25,7 +25,7 @@ describe('URLRouter', function () {
         assert.equal(handler(), recoveredHandler());
     });
     it('should get a 404 response, if the HTTP verb is different', async function () {
-        const router = new URLRouter();
+        const router = new URLRouterFirstAttempt();
         const handler = () => 'Here are some images';
         router.setHandlerForRoute('/images', 'get', handler)
 
