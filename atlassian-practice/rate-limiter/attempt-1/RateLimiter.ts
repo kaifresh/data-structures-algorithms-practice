@@ -1,7 +1,7 @@
 export class RateLimiter {
 
-    private lastUpdatedMsec: number = 0;
-    private requestCount: number = 0;
+    private lastUpdatedMsec = 0;
+    private requestCount = 0;
 
     private readonly maxRequestsInPeriod: number = 100;
     private readonly periodMsec: number = 10 * 1000;
