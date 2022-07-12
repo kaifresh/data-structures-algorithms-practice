@@ -175,6 +175,9 @@ export class Snake {
         return this.body.last()!;
     }
 
+    /**
+     * A convenience method for testing. Runs in O(N).
+     */
     getSnakeBody() {
         return this.body.toArray().reverse();
     }
@@ -183,6 +186,11 @@ export class Snake {
         return i === this.body.size - 1;
     }
 
+    /**
+     * Runs in O(1)
+     * @note implemented using a linked list and removing its HEAD
+     * @private
+     */
     private removeFromBack() {
         return this.body.shift();
     }
