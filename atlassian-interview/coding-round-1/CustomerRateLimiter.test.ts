@@ -4,7 +4,6 @@ import {CustomerRateLimiter} from "./CustomerRateLimiter";
 describe('CustomerRateLimiter', function () {
     it('should process the request of a single customer', async function () {
         const customerRateLimiter = new CustomerRateLimiter(1, 1000);
-        
         const customerName = 'kai';
 
         const canProcessRequest = customerRateLimiter.canProcessRequestForCustomer(customerName);
